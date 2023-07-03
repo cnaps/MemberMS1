@@ -44,7 +44,7 @@ public class Member {
         return this;
     }
 
-    public void deleteMember(){}
+
 
     public void savePoint(Long point)
     {
