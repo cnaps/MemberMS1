@@ -1,0 +1,12 @@
+# 카프카 세팅
+cloud:
+  stream:
+    kafka:
+      binder:
+        brockers: localhost:9092
+        zkNodes: localhost:32181
+    function:
+      definition: itemRented;
+    bindings:
+      itemRented-in-0:
+        destination: ItemRented

@@ -7,11 +7,15 @@ import com.infrean.MemberMS.domain.model.vo.PassWord;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
+//@EnableBinding(Processor.class)
 public class MemberMsApplication {
+
 
 	public static void main(String[] args) throws Exception {
 		dominTest();
+
 		SpringApplication.run(MemberMsApplication.class, args);
 	}
 
@@ -37,5 +41,15 @@ public class MemberMsApplication {
 		System.out.println("-----------------------------------------");
 
 	}
+
+
+
+
+//	@ServiceActivator(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
+//	public String handleMessage(String message) {
+//		System.out.println("Received message: " + message);
+//		// 메시지 처리 로직을 여기에 작성하세요.
+//		return message;
+//	}
 }
 

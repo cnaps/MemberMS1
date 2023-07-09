@@ -14,7 +14,6 @@ import java.util.List;
 @Entity
 public class Member {
 
-
     @EmbeddedId
     private IDName idName;
     @Embedded
@@ -39,12 +38,9 @@ public class Member {
         return member;
     }
 
-
     public Member editMember(){
         return this;
     }
-
-
 
     public void savePoint(Long point)
     {
@@ -54,7 +50,6 @@ public class Member {
     public void usePoint(Long point) throws Exception {
         this.point.removePoint(point);
     }
-
     public Member login(IDName idNname, PassWord password)
     {
         return this;
