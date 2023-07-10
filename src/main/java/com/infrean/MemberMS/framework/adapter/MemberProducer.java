@@ -30,8 +30,6 @@ public class MemberProducer  {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     private final KafkaProperties kafkaProperties;
-
-    private final static Logger logger = LoggerFactory.getLogger(MemberProducer.class);
     private KafkaProducer<String, String> producer;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
