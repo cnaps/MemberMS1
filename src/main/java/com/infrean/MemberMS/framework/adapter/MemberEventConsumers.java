@@ -1,40 +1,103 @@
 package com.infrean.MemberMS.framework.adapter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.infrean.MemberMS.config.KafkaProperties;
 import com.infrean.MemberMS.domain.model.event.ItemRented;
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.integration.support.json.Jackson2JsonObjectMapper;
 
-import java.awt.event.ItemEvent;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.time.Duration;
+import java.util.Collections;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+
+@Service
+@RequiredArgsConstructor
 public class MemberEventConsumers {
-    private Jackson2JsonObjectMapper mapper = new Jackson2JsonObjectMapper();
-    private static Logger logger = LoggerFactory.getLogger(MemberEventConsumers.class);
+    private final Logger log = LoggerFactory.getLogger(MemberEventConsumers.class);
 
-    @Bean
-    public Consumer itemRented() {
-        return (o) -> {
-            logger.info("ItemRented 이벤트 수신");
-            try {
-                ItemRented event = mapper.fromJson(o, ItemRented.class);
-                logger.info("[memberId : {}, ItemId : {}] is updated.", event.getMeberId(),event.getItemId());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        };
+    private final AtomicBoolean closed = new AtomicBoolean(false);
+
+    public static final String TOPIC = "topic_kafka";
+
+    private final KafkaProperties kafkaProperties;
+
+    private KafkaConsumer<String, String> kafkaConsumer;
+
+    private ExecutorService executorService = Executors.newCachedThreadPool();
+
+    @KafkaListener(topics = "exam", groupId = "foo")
+    public void consume(String message) throws IOException {
+        System.out.printf("Consumed message : %s%n", message);
     }
 
-//    @Bean
-//    public Supplier<String> produceEvent() {
-//        return () -> {
-//            // 이벤트를 생성하고 반환하는 로직을 여기에 구현합니다.
-//            return "Event message";
-//        };
-//    }
-//
+    /*
+    @PostConstruct
+    public void start(){
+        log.info("Kafka consumer starting ...");
+        this.kafkaConsumer = new KafkaConsumer<>(kafkaProperties.getConsumerProps());
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
+        kafkaConsumer.subscribe(Collections.singleton(TOPIC));
+        log.info("Kafka consumer started");
 
-}
+        executorService.execute(()-> {
+                    try {
+
+                        while (!closed.get()){
+                            ConsumerRecords<String, String> records = kafkaConsumer.poll(Duration.ofSeconds(3));
+                            for(ConsumerRecord<String, String> record: records) {
+                                log.info("Consumed message in {} : {}", TOPIC, record.value());
+                                ObjectMapper objectMapper = new ObjectMapper();
+                                ItemRented itemRented = objectMapper.readValue(record.value(), ItemRented.class);
+                                log.info("itemRentedID is {}",itemRented.getItemId());
+//                                Rental rental = rentalService.createRental(userIdCreated);
+
+                            }
+
+                        }
+                        kafkaConsumer.commitSync();
+
+                    }catch (WakeupException e){
+                        if(!closed.get()){
+                            throw e;
+                        }
+
+                    }catch (Exception e){
+                        log.error(e.getMessage(), e);
+                    }finally {
+                        log.info("kafka consumer close");
+                        kafkaConsumer.close();
+                    }
+
+                }
+
+
+
+        );
+    }
+
+
+    public KafkaConsumer<String, String> getKafkaConsumer() {
+        return kafkaConsumer;
+    }
+
+    public void shutdown() {
+        log.info("Shutdown Kafka consumer");
+        closed.set(true);
+        kafkaConsumer.wakeup();
+    }
+
+     */
+    }
