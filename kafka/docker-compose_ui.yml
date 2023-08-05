@@ -28,4 +28,4 @@ services:
     environment:
       - KAFKA_CLUSTERS_0_NAME=local
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-1:29092
-      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper-1:22181
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper-1:32181

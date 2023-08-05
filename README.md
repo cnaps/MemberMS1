@@ -24,3 +24,4 @@
   - spring stream 3.0을 고려했으나, spring boot등의 버전을 고려했을 경우, 시기 상조임.(스웨거와의 호환등 문제 발생)
   - kafka client를 사용하는 방향으로 변경 필요 
 
+up
