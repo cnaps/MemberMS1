@@ -1,13 +1,12 @@
-package com.infrean.MemberMS.domain.model.vo;
+package com.msa.MemberMS.domain.model.vo;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Embeddable
-@Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,6 +28,10 @@ public class Point {
 
     public static Point sample(){
         return new Point(10L);
+    }
+
+    public static Point cratePoint(){
+        return new Point(0L);
     }
 }
 

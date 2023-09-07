@@ -1,4 +1,4 @@
-package com.infrean.MemberMS;
+package com.msa.MemberMS;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

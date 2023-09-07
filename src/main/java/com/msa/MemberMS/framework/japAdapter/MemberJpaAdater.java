@@ -1,12 +1,10 @@
-package com.infrean.MemberMS.framework.japAdapter;
+package com.msa.MemberMS.framework.japAdapter;
 
-import com.infrean.MemberMS.application.outputPort.MemberOutPutPort;
-import com.infrean.MemberMS.domain.model.Member;
-import com.infrean.MemberMS.domain.model.vo.IDName;
+import com.msa.MemberMS.application.outputPort.MemberOutPutPort;
+import com.msa.MemberMS.domain.model.Member;
+import com.msa.MemberMS.domain.model.vo.IDName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -16,6 +14,11 @@ public class MemberJpaAdater implements MemberOutPutPort {
     @Override
     public Member loadMember(long memberNo) {
         return memberRepository.findById(memberNo).get();
+    }
+
+    @Override
+    public Member loadMemberByIdName(IDName idName) {
+        return memberRepository.findMemberByIdName(idName).get();
     }
 
     @Override

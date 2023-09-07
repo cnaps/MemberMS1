@@ -1,4 +1,4 @@
-package com.infrean.MemberMS.domain.model.vo;
+package com.msa.MemberMS.domain.model.vo;
 
 public enum UserRole {
     ADMIN,

@@ -1,4 +1,4 @@
-package com.infrean.MemberMS.config;
+package com.msa.MemberMS.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(true) // Swagger 에서 제공해주는 기본 응답 코드를 표시할 것이면 true
                 .select()
                 // .apis(RequestHandlerSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.infrean.MemberMS"))
+                .apis(RequestHandlerSelectors.basePackage("com.msa.MemberMS"))
                 .paths(PathSelectors.any())
                 .build();
     }

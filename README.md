@@ -24,4 +24,37 @@
   - spring stream 3.0을 고려했으나, spring boot등의 버전을 고려했을 경우, 시기 상조임.(스웨거와의 호환등 문제 발생)
   - kafka client를 사용하는 방향으로 변경 필요 
 
-up
+- 도커 파일 생성
+  - Dockerfile 생성
+  ```
+    FROM adoptopenjdk/openjdk11
+    CMD ["./mvnw", "clean", "package"]
+    ARG JAR_FILE_PATH=target/*.jar
+    COPY ${JAR_FILE_PATH} app.jar
+    EXPOSE 8080
+    ENTRYPOINT ["java", "-jar", "app.jar"]
+     ```
+
+- 빌드
+  - 어플리케이션 빌드
+
+    ```
+    mvn clean package 
+    ```
+
+- 컨테이너 생성
+  - 도커 컨테이너 이미지 생성
+
+    ```
+     docker build -t memberms:0.0.1 . 
+    ```
+
+    ```
+    docker image 
+    ```
+
+  - 도커 컨테이너 실행
+
+    ``` 
+    docker run --name MemberMS -p 8082:8082 memberms:0.0.1
+    ```

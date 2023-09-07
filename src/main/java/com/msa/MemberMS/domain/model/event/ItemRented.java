@@ -1,5 +1,6 @@
-package com.infrean.MemberMS.domain.model.event;
+package com.msa.MemberMS.domain.model.event;
 
+import com.msa.MemberMS.domain.model.vo.IDName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

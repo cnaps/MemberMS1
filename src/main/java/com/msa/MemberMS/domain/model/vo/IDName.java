@@ -1,7 +1,7 @@
-package com.infrean.MemberMS.domain.model.vo;
+package com.msa.MemberMS.domain.model.vo;
 
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class IDName  {
+public class IDName  implements Serializable {
     private String id;
 
     private String name;

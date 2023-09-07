@@ -1,16 +1,17 @@
-package com.infrean.MemberMS.application.inputPort;
+package com.msa.MemberMS.application.inputPort;
 
-import com.infrean.MemberMS.application.outputPort.MemberOutPutPort;
-import com.infrean.MemberMS.application.usecase.AddMemberUsecase;
-import com.infrean.MemberMS.domain.model.Member;
-import com.infrean.MemberMS.domain.model.vo.*;
-import com.infrean.MemberMS.framework.web.dto.MemberInfoDTO;
-import com.infrean.MemberMS.framework.web.dto.MemberOutPutDTO;
-import jakarta.transaction.Transactional;
+import com.msa.MemberMS.application.outputPort.MemberOutPutPort;
+import com.msa.MemberMS.application.usecase.AddMemberUsecase;
+import com.msa.MemberMS.domain.model.Member;
+import com.msa.MemberMS.domain.model.vo.Email;
+import com.msa.MemberMS.domain.model.vo.IDName;
+import com.msa.MemberMS.domain.model.vo.PassWord;
+import com.msa.MemberMS.framework.web.dto.MemberInfoDTO;
+import com.msa.MemberMS.framework.web.dto.MemberOutPutDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor

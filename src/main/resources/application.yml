@@ -1,10 +1,31 @@
 # 카프카 세팅
-
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: factory-demo
+  profiles:
+    active: default
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
-      group-id: foo
+      group-id: member
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -14,4 +35,8 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 server:
-  port: 8088
+  port: 8082
+
+logging:
+  level:
+    org.hibernate.SQL: debug

@@ -1,12 +1,11 @@
-package com.infrean.MemberMS.domain.model.vo;
+package com.msa.MemberMS.domain.model.vo;
 
-import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-@Embeddable @Setter
+import javax.persistence.Embeddable;
+@Embeddable
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

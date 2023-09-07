@@ -1,6 +1,6 @@
-package com.infrean.MemberMS.config;
+package com.msa.MemberMS.config;
 
-import com.infrean.MemberMS.domain.model.event.ItemRented;
+import com.msa.MemberMS.domain.model.event.ItemRented;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
     @Bean
-    public ProducerFactory<String, ItemRented> producerFactory()
+    public ProducerFactory<String, String> producerFactory()
     {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");

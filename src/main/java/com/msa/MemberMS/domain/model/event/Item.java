@@ -1,8 +1,9 @@
-package com.infrean.MemberMS.domain.model.event;
+package com.msa.MemberMS.domain.model.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

@@ -1,6 +1,6 @@
-package com.infrean.MemberMS.framework.web.dto;
+package com.msa.MemberMS.framework.web.dto;
 
-import com.infrean.MemberMS.domain.model.Member;
+import com.msa.MemberMS.domain.model.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

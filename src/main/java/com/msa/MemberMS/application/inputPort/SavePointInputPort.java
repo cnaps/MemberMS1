@@ -1,14 +1,13 @@
-package com.infrean.MemberMS.application.inputPort;
+package com.msa.MemberMS.application.inputPort;
 
-import com.infrean.MemberMS.application.outputPort.MemberOutPutPort;
-import com.infrean.MemberMS.application.usecase.SavePointUsecase;
-import com.infrean.MemberMS.domain.model.Member;
-import com.infrean.MemberMS.domain.model.vo.IDName;
-import com.infrean.MemberMS.domain.model.vo.Point;
-import com.infrean.MemberMS.framework.web.dto.MemberOutPutDTO;
-import jakarta.transaction.Transactional;
+import com.msa.MemberMS.application.outputPort.MemberOutPutPort;
+import com.msa.MemberMS.application.usecase.SavePointUsecase;
+import com.msa.MemberMS.domain.model.Member;
+import com.msa.MemberMS.domain.model.vo.IDName;
+import com.msa.MemberMS.framework.web.dto.MemberOutPutDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -17,8 +16,8 @@ public class SavePointInputPort implements SavePointUsecase {
 
     private final MemberOutPutPort memberOutPutPort;
     @Override
-    public MemberOutPutDTO savePoint(long memberNo, Long point) {
-        Member loadMember = memberOutPutPort.loadMember(memberNo);
+    public MemberOutPutDTO savePoint(IDName idName, Long point) {
+        Member loadMember = memberOutPutPort.loadMemberByIdName(idName);
         loadMember.savePoint(point);
         Member saveedMember = memberOutPutPort.saveMember(loadMember);
         return MemberOutPutDTO.mapToDTO(saveedMember);

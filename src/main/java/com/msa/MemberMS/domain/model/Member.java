@@ -1,13 +1,12 @@
-package com.infrean.MemberMS.domain.model;
+package com.msa.MemberMS.domain.model;
 
-import com.infrean.MemberMS.domain.model.vo.*;
-import jakarta.persistence.*;
+import com.msa.MemberMS.domain.model.vo.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -37,14 +36,11 @@ public class Member {
         member.setIdName(idName);
         member.setPassWord(pwd);
         member.setEmail(email);
-        member.setPoint(new Point(0L));
+        member.setPoint( Point.cratePoint());
         member.addAuthority(new Authority(UserRole.USER));
         return member;
     }
 
-    public Member editMember(){
-        return this;
-    }
 
     public void savePoint(Long point)
     {

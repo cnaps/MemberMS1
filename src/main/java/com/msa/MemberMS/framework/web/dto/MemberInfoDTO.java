@@ -1,4 +1,4 @@
-package com.infrean.MemberMS.framework.web.dto;
+package com.msa.MemberMS.framework.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

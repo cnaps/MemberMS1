@@ -1,4 +1,4 @@
-package com.infrean.MemberMS.framework.kafkaAdapter;
+package com.msa.MemberMS.framework.kafkaAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

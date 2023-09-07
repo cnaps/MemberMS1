@@ -1,11 +1,11 @@
-package com.infrean.MemberMS.framework.web;
+package com.msa.MemberMS.framework.web;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.infrean.MemberMS.application.usecase.AddMemberUsecase;
-import com.infrean.MemberMS.application.usecase.InquiryMemberUsecase;
-import com.infrean.MemberMS.framework.kafkaAdapter.MemberProducer;
-import com.infrean.MemberMS.framework.web.dto.MemberInfoDTO;
-import com.infrean.MemberMS.framework.web.dto.MemberOutPutDTO;
+import com.msa.MemberMS.application.usecase.AddMemberUsecase;
+import com.msa.MemberMS.application.usecase.InquiryMemberUsecase;
+import com.msa.MemberMS.framework.kafkaAdapter.MemberProducer;
+import com.msa.MemberMS.framework.web.dto.MemberInfoDTO;
+import com.msa.MemberMS.framework.web.dto.MemberOutPutDTO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

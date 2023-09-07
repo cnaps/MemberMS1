@@ -1,13 +1,12 @@
-package com.infrean.MemberMS.application.inputPort;
+package com.msa.MemberMS.application.inputPort;
 
-import com.infrean.MemberMS.application.outputPort.MemberOutPutPort;
-import com.infrean.MemberMS.application.usecase.InquiryMemberUsecase;
-import com.infrean.MemberMS.domain.model.Member;
-import com.infrean.MemberMS.domain.model.vo.IDName;
-import com.infrean.MemberMS.framework.web.dto.MemberOutPutDTO;
-import jakarta.transaction.Transactional;
+import com.msa.MemberMS.application.outputPort.MemberOutPutPort;
+import com.msa.MemberMS.application.usecase.InquiryMemberUsecase;
+import com.msa.MemberMS.domain.model.Member;
+import com.msa.MemberMS.framework.web.dto.MemberOutPutDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
