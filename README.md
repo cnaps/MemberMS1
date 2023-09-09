@@ -27,12 +27,11 @@
 - 도커 파일 생성
   - Dockerfile 생성
   ```
-    FROM adoptopenjdk/openjdk11
-    CMD ["./mvnw", "clean", "package"]
-    ARG JAR_FILE_PATH=target/*.jar
-    COPY ${JAR_FILE_PATH} app.jar
-    EXPOSE 8080
-    ENTRYPOINT ["java", "-jar", "app.jar"]
+  FROM openjdk:11-jre-slim
+  ARG JAR_FILE_PATH=target/*.jar
+  COPY ${JAR_FILE_PATH} app.jar
+  EXPOSE 8080
+  CMD ["java", "-jar", "app.jar"]
      ```
 
 - 빌드
@@ -41,7 +40,10 @@
     ```
     mvn clean package 
     ```
-
+- 실행
+    ```
+      ./mvnw spring-boot:run
+    ```
 - 컨테이너 생성
   - 도커 컨테이너 이미지 생성
 

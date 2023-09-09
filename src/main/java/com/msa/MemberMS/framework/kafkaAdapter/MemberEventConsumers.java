@@ -24,9 +24,7 @@ import java.io.IOException;
 public class MemberEventConsumers {
 
     private final Logger log = LoggerFactory.getLogger(MemberEventConsumers.class);
-    public static final  String  TOPIC = "topic_kafka";
     private final ObjectMapper objectMapper = new ObjectMapper();
-
     private final SavePointUsecase savePointUsecase;
     private final UsePointUsecase usePointUsecase;
 
@@ -36,14 +34,12 @@ public class MemberEventConsumers {
         ItemRented itemRented = objectMapper.readValue(record.value(), ItemRented.class);
         savePointUsecase.savePoint(itemRented.getIdName(),itemRented.getPoint());
     }
-
     @KafkaListener(topics="rental_return",groupId = "member")
     public void consumeReturn(ConsumerRecord<String, String> record) throws IOException{
         System.out.printf("rental_return:"+ record.value());
         ItemReturned itemReturned = objectMapper.readValue(record.value(), ItemReturned.class);
         savePointUsecase.savePoint(itemReturned.getIdName(),itemReturned.getPoint());
     }
-
     @KafkaListener(topics="overdue_clear",groupId = "member")
     public void consumeClear(ConsumerRecord<String, String> record) throws Exception {
         System.out.printf(record.value());
